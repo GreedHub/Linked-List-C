@@ -1,34 +1,34 @@
 #include <stdio.h>
 
-
 struct Node{
     int data;
     struct Node* next;
     struct Node* prev;
 };
 
-
-void static addToEnd(struct Node* list, int data){
+struct Node* createNode( int data){
     struct Node *aux = (struct Node*)malloc(sizeof(struct Node));
-    list->next = &aux;
-    aux->prev = &list;
     aux->data = data;
-    return;
+    return aux;
 }
-
-
-
 
 int main(){
     struct Node* firstNode = (struct Node*)malloc(sizeof(struct Node)); 
-    firstNode->data = 1;
-    addToEnd(firstNode,2);
+    struct Node* tempNode = (struct Node*)malloc(sizeof(struct Node));
     struct Node* actualNode = firstNode;
+    firstNode->data = 0;
 
-    while(actualNode->next){
-        printf("%d\n",actualNode->data);
+    for(int i = 1 ; i<=5; i++){
+        tempNode = createNode(i);
+        actualNode->next = tempNode;
         actualNode = actualNode->next;
     }
+
+    actualNode = firstNode;
+    do{
+        printf("%d\n",actualNode->data);
+        actualNode = actualNode->next;
+    }while(actualNode->next);
 
     return 0;
 }
