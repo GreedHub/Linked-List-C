@@ -25,7 +25,6 @@ int main(){
     addToEnd(firstNode,2);
     struct Node* actualNode = firstNode;
 
-
     while(actualNode->next){
         printf("%d\n",actualNode->data);
         actualNode = actualNode->next;
